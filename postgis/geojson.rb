@@ -1,6 +1,6 @@
 require 'json'
 
-rows = File.readlines('/tmp/ca25.geojson').map(&:chomp).reject(&:empty?).map do |r|
+rows = $stdin.readlines.map(&:chomp).reject(&:empty?).map do |r|
   begin
     JSON.parse(r)
   rescue
