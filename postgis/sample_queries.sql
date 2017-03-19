@@ -70,13 +70,12 @@ select r.pct16,
        pres_clinton_per,
        pres_trump_per,
        pres_lariva,
-       pres_lariva_per,
-       (r.pres_trump + r.pres_clinton) as total,
+       (r.pres_trump + r.pres_clinton) as total
 from results r
 inner join ca25_precincts p
 on r.pct16 = p.pct16
 where (r.pres_trump + r.pres_clinton) > 1000
 -- Rough way to get districts in santa clarita
 and st_dwithin(st_point(-118.554723, 34.389804)::geography, p.geog, 10000)
-order by pres_clinton_per
+order by pres_lariva
 desc limit 2;
